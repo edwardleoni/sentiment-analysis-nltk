@@ -1,2 +1,4 @@
 env
 .idea
+*.pickle
+__pycache__
