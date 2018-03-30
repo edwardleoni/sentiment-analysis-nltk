@@ -34,10 +34,3 @@ classifier.show_most_informative_features()
 f = open('classifier.pickle', 'wb')
 pickle.dump(classifier, f)
 f.close()
-
-f = open('my_classifier.pickle', 'rb')
-classifier = pickle.load(f)
-f.close()
-
-features = extract('I am using this amazing classifier')
-print(classifier.classify(features))
