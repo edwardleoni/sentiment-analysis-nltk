@@ -6,6 +6,10 @@ import pickle
 import nltk.classify.util
 
 
+""" 
+Only downloads the movie reviews database
+if haven't done so previously 
+"""
 try:
     negative_ids = movie_reviews.fileids('neg')
     positive_ids = movie_reviews.fileids('pos')
@@ -15,9 +19,16 @@ except LookupError:
     negative_ids = movie_reviews.fileids('neg')
     positive_ids = movie_reviews.fileids('pos')
 
+""" 
+Separate positive features from negative
+"""
 negative_features = [(extract(movie_reviews.words(fileids=[f])), 'neg') for f in negative_ids]
 positive_features = [(extract(movie_reviews.words(fileids=[f])), 'pos') for f in positive_ids]
 
+""" 
+Trains of 3/4 off the database
+and test off 1/4
+"""
 negative_cutoff = int(len(negative_features) * 3 / 4)
 positive_cutoff = int(len(positive_features) * 3 / 4)
 
